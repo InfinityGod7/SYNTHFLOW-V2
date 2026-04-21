@@ -21,6 +21,15 @@ function createWindow() {
     },
   });
 
+  // Allow microphone access
+  win.webContents.session.setPermissionCheckHandler((_webContents, permission) => {
+    return permission === 'media' || permission === 'microphone';
+  });
+
+  win.webContents.session.setPermissionRequestHandler((_webContents, permission, callback) => {
+    callback(permission === 'media' || permission === 'microphone');
+  });
+
   // Remove menu bar
   win.setMenuBarVisibility(false);
 

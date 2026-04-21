@@ -10,6 +10,7 @@ export interface AppSettings {
   cleanupModel: string;
   transcriptionModel: string;
   theme: ThemeType;
+  microphoneId: string;
 }
 
 export type AppStatus = 'idle' | 'recording' | 'transcribing' | 'polishing' | 'pasted' | 'error';

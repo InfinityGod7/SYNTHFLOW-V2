@@ -8,9 +8,12 @@ export function useRecorder() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
 
-  const startRecording = useCallback(async () => {
+  const startRecording = useCallback(async (deviceId?: string) => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const audioConstraints: MediaTrackConstraints = deviceId
+        ? { deviceId: { exact: deviceId } }
+        : true as unknown as MediaTrackConstraints;
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: audioConstraints });
       const mediaRecorder = new MediaRecorder(stream);
       mediaRecorderRef.current = mediaRecorder;
       chunksRef.current = [];

@@ -10,6 +10,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   cleanupModel: 'gemini-3-flash-preview',
   transcriptionModel: 'gemini-3.1-flash-live-preview',
   theme: 'synthwave',
+  microphoneId: '',
 };
 
 export const CLEANUP_SYSTEM_PROMPT = `You are a voice transcription cleanup assistant.

@@ -29,7 +29,7 @@ export function RecorderView() {
       // Since we are in a browser, we'll listen for a specific key
       if (e.code === 'Space' && (e.ctrlKey || e.metaKey) && state === 'idle') {
         e.preventDefault();
-        startRecording();
+        startRecording(settings.microphoneId || undefined);
         addLog('RECORDING STARTED // USER_PTT_ACTIVE');
       }
     };
@@ -274,7 +274,7 @@ export function RecorderView() {
           {/* Floating Action Bar (Responsive Mobile View) */}
           <div className="lg:hidden flex gap-4 p-4 border-t border-current opacity-20 mt-auto">
              <button
-                onMouseDown={startRecording}
+                onMouseDown={() => startRecording(settings.microphoneId || undefined)}
                 onMouseUp={stopRecording}
                 className={cn(
                   "flex-1 py-4 font-black uppercase text-sm tracking-widest",
