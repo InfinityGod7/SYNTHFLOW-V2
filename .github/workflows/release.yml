@@ -5,6 +5,9 @@ on:
     branches: [master, main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: windows-latest
@@ -33,9 +36,12 @@ jobs:
       - name: Create GitHub Release and upload .exe
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: build-${{ github.run_number }}
-          name: "SynthFlow Build #${{ github.run_number }}"
+          tag_name: v1.0.${{ github.run_number }}
+          name: "SynthFlow v1.0.${{ github.run_number }}"
           body: "Automated build from commit ${{ github.sha }}"
           files: release/*.exe
+          draft: false
+          prerelease: false
+          make_latest: "true"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
