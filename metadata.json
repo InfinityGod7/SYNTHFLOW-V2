@@ -1,0 +1,6 @@
+{
+  "name": "SynthFlow Desktop",
+  "description": "Refactored and modernized AI Voice Dictation with real-time transcription and retro-synth themes.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["AI Voice Transcription", "Global Hotkeys", "Custom Themes"]
+}
